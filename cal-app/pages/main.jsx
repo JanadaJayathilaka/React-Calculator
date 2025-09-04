@@ -7,15 +7,15 @@ function Main() {
   return (
     <>
       <div className="bg-cyan-500 pt-10 w-full h-screen">
-        <div className="flex items-center flex-col">
-          <div className="flex flex-col text-2xl font-bold text-gray-800 p-4 bg-gray-700">
+        <div className="flex items-center flex-col ">
+          <div className="flex flex-col text-2xl font-bold text-gray-800 p-4 bg-gray-700 ">
             <div className="text-center text-white">
               <h1>Calculator</h1>
             </div>
             <div className="bg-gray-700 m-2.5 border-2 border-gray-700">
               <input
                 type="number"
-                className="p-2 w-full text-white"
+                className="p-2 w-full text-white bg-gray-700 rounded-lg focus:outline-none"
                 placeholder="0"
               />
             </div>
@@ -88,7 +88,7 @@ function Main() {
               </button>
             </div>
             <div>
-              <button className="bg-gray-600 text-white p-2 rounded-xl align-baseline  h-15 mt-2 w-full">
+              <button className="bg-gray-600 text-white p-2 rounded-xl  h-15 mt-2 lg:w-52 md:w-45 sm:flex-2 w-full">
                 0
               </button>
             </div>
