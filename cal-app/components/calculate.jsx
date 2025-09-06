@@ -2,7 +2,7 @@ import React from "react";
 
 function calculate(expression) {
   try {
-    expression = expression.replace(/\s+/g, ""); // Remove whitespace
+    expression = expression.replace(/\s+/g, "");
 
     if (!/^[0-9+\-*/.()]+$/.test(expression)) {
       return "Error";

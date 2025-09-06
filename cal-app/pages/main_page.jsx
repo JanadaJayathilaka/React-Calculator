@@ -37,7 +37,14 @@ function Main() {
 
   return (
     <>
-      <div className="bg-cyan-500 pt-10 w-full h-screen">
+      <div
+        style={{
+          backgroundImage:
+            "radial-gradient(125% 125% at 50% 0%, #121833f8 50%, #1e5785 100%)",
+        }}
+        // className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 pt-10 w-full h-screen"
+        className=" pt-10 w-full h-screen"
+      >
         <div className="flex items-center flex-col ">
           <div className="flex flex-col text-2xl font-bold text-gray-800 p-4 bg-gray-700 ">
             <div className="text-center text-white">
@@ -65,7 +72,7 @@ function Main() {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleRadical();
                 }}
@@ -77,12 +84,12 @@ function Main() {
                   setInput("");
                   setResult("");
                 }}
-                className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
               >
                 {input ? "C" : "AC"}
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   setInput(input.slice(0, -1));
                 }}
@@ -90,7 +97,7 @@ function Main() {
                 <Delete className="font-bold" />
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("(");
                 }}
@@ -98,7 +105,7 @@ function Main() {
                 (
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick(")");
                 }}
@@ -108,7 +115,7 @@ function Main() {
             </div>
             <div className="flex items-center justify-between mt-2">
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("7");
                 }}
@@ -116,7 +123,7 @@ function Main() {
                 7
               </button>
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("8");
                 }}
@@ -124,7 +131,7 @@ function Main() {
                 8
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("9");
                 }}
@@ -132,7 +139,7 @@ function Main() {
                 9
               </button>
               <button
-                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   // handleButtonClick("/");
                   handleDivide();
@@ -141,7 +148,7 @@ function Main() {
                 <Divide className="w-8 h-7.5" />
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("-");
                 }}
@@ -151,7 +158,7 @@ function Main() {
             </div>
             <div className="flex items-center justify-between mt-2">
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("4");
                 }}
@@ -159,7 +166,7 @@ function Main() {
                 4
               </button>
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("5");
                 }}
@@ -167,7 +174,7 @@ function Main() {
                 5
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("6");
                 }}
@@ -175,7 +182,7 @@ function Main() {
                 6
               </button>
               <button
-                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("+");
                 }}
@@ -183,7 +190,7 @@ function Main() {
                 <h1 className="text-4xl font-bold mb-2">+</h1>
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("*");
                 }}
@@ -193,7 +200,7 @@ function Main() {
             </div>
             <div className="flex items-center justify-between mt-2">
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("1");
                 }}
@@ -201,7 +208,7 @@ function Main() {
                 1
               </button>
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15"
+                className="bg-gray-600 text-white p-2 rounded-xl align-baseline w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("2");
                 }}
@@ -209,7 +216,7 @@ function Main() {
                 2
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-white p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("3");
                 }}
@@ -217,7 +224,7 @@ function Main() {
                 3
               </button>
               <button
-                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick(".");
                 }}
@@ -225,7 +232,7 @@ function Main() {
                 <h1 className="text-4xl font-bold mb-2">.</h1>
               </button>
               <button
-                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15 hover:bg-gray-500"
                 onClick={handleCalculate}
               >
                 <h1 className="text-4xl font-bold mb-2">=</h1>
@@ -233,7 +240,7 @@ function Main() {
             </div>
             <div>
               <button
-                className="bg-gray-600 text-white p-2 rounded-xl  h-15 mt-2 lg:w-52 md:w-45 sm:flex-2 w-full"
+                className="bg-gray-600 text-white p-2 rounded-xl  h-15 mt-2 lg:w-52 md:w-45 sm:flex-2 w-full hover:bg-gray-500"
                 onClick={() => {
                   handleButtonClick("0");
                 }}
