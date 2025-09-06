@@ -3,11 +3,22 @@ import { Divide } from "lucide-react";
 import { Radical } from "lucide-react";
 import { Delete } from "lucide-react";
 import { X } from "lucide-react";
+import { evaluate } from "mathjs";
 function Main() {
   const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
+  };
+
+  const handleCalculate = () => {
+    console.log("Calculate");
+    try {
+      setResult(evaluate(input));
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
     <>
@@ -17,13 +28,24 @@ function Main() {
             <div className="text-center text-white">
               <h1 className="text-orange-600">Calculator</h1>
             </div>
-            <div className="bg-gray-700 m-2.5 border-2 border-gray-700">
+            <div className="bg-gray-700 ml-2.5 border-2 border-gray-700">
               <input
                 type="text"
-                className="p-2 w-full text-white bg-gray-700 rounded-lg focus:outline-none"
+                className="w-full text-white bg-gray-700 rounded-lg focus:outline-none"
                 placeholder="0"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+            <div className="bg-gray-700 ml-2.5 border-2 border-gray-700">
+              <input
+                type="text"
+                className="w-full mb-2.5 text-white bg-gray-700 rounded-lg focus:outline-none"
+                // placeholder={input ? eval(input) : "Result"}
+                placeholder="Result"
+                value={result}
+                onChange={(e) => setResult(e.target.value)}
+                readOnly
               />
             </div>
             <div className="flex items-center justify-between">
@@ -33,12 +55,18 @@ function Main() {
               <button
                 onClick={() => {
                   setInput("");
+                  setResult("");
                 }}
                 className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15"
               >
                 {input ? "C" : "AC"}
               </button>
-              <button className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15">
+              <button
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                onClick={() => {
+                  setInput(input.slice(0, -1));
+                }}
+              >
                 <Delete className="font-bold" />
               </button>
               <button
@@ -115,7 +143,12 @@ function Main() {
               >
                 6
               </button>
-              <button className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15">
+              <button
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                onClick={() => {
+                  handleButtonClick("+");
+                }}
+              >
                 <h1 className="text-4xl font-bold mb-2">+</h1>
               </button>
               <button className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15">
@@ -150,7 +183,10 @@ function Main() {
               <button className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15">
                 <h1 className="text-4xl font-bold mb-2">.</h1>
               </button>
-              <button className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15">
+              <button
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                onClick={handleCalculate}
+              >
                 <h1 className="text-4xl font-bold mb-2">=</h1>
               </button>
             </div>
