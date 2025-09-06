@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Divide } from "lucide-react";
 import { Radical } from "lucide-react";
 import { Delete } from "lucide-react";
@@ -7,6 +7,7 @@ import { evaluate } from "mathjs";
 function Main() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+  const inputRef = useRef(null);
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
@@ -15,11 +16,25 @@ function Main() {
   const handleCalculate = () => {
     console.log("Calculate");
     try {
-      setResult(evaluate(input));
+      let expression = input;
+      if (!expression && result) {
+        expression = result.toString();
+      }
+      const safeInput = input.replace(/√(\d+(\.\d+)?)/g, "sqrt($1)");
+      setResult(evaluate(safeInput));
     } catch (e) {
       console.error(e);
     }
   };
+
+  const handleRadical = () => {
+    setInput((prev) => prev + "√");
+  };
+
+  const handleDivide = () => {
+    setInput((prev) => prev + "/");
+  };
+
   return (
     <>
       <div className="bg-cyan-500 pt-10 w-full h-screen">
@@ -30,6 +45,7 @@ function Main() {
             </div>
             <div className="bg-gray-700 ml-2.5 border-2 border-gray-700">
               <input
+                ref={inputRef}
                 type="text"
                 className="w-full text-white bg-gray-700 rounded-lg focus:outline-none"
                 placeholder="0"
@@ -41,7 +57,6 @@ function Main() {
               <input
                 type="text"
                 className="w-full mb-2.5 text-white bg-gray-700 rounded-lg focus:outline-none"
-                // placeholder={input ? eval(input) : "Result"}
                 placeholder="Result"
                 value={result}
                 onChange={(e) => setResult(e.target.value)}
@@ -49,7 +64,12 @@ function Main() {
               />
             </div>
             <div className="flex items-center justify-between">
-              <button className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15">
+              <button
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline w-15 h-15"
+                onClick={() => {
+                  handleRadical();
+                }}
+              >
                 <Radical className="w-8 h-8 font-bold" />
               </button>
               <button
@@ -111,10 +131,21 @@ function Main() {
               >
                 9
               </button>
-              <button className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15">
+              <button
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                onClick={() => {
+                  // handleButtonClick("/");
+                  handleDivide();
+                }}
+              >
                 <Divide className="w-8 h-7.5" />
               </button>
-              <button className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15">
+              <button
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                onClick={() => {
+                  handleButtonClick("-");
+                }}
+              >
                 <h1 className="text-5xl font-bold mb-2">-</h1>
               </button>
             </div>
@@ -151,7 +182,12 @@ function Main() {
               >
                 <h1 className="text-4xl font-bold mb-2">+</h1>
               </button>
-              <button className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15">
+              <button
+                className="flex items-center justify-center bg-gray-600 text-orange-600 p-2 rounded-xl align-baseline ml-0.5 w-15 h-15"
+                onClick={() => {
+                  handleButtonClick("*");
+                }}
+              >
                 <X className="w-8 h-7.5" />
               </button>
             </div>
@@ -180,7 +216,12 @@ function Main() {
               >
                 3
               </button>
-              <button className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15">
+              <button
+                className="bg-gray-600 text-orange-600 p-2 rounded-xl flex items-center justify-center ml-0.5 w-15 h-15"
+                onClick={() => {
+                  handleButtonClick(".");
+                }}
+              >
                 <h1 className="text-4xl font-bold mb-2">.</h1>
               </button>
               <button
